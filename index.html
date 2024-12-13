@@ -13,123 +13,383 @@
 <body>
     <nav>
         <section class="branding">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-snail">
+            <p>BookWorm</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-snail">
                 <path d="M2 13a6 6 0 1 0 12 0 4 4 0 1 0-8 0 2 2 0 0 0 4 0"/><circle cx="10" cy="13" r="8"/><path d="M2 21h12c4.4 0 8-3.6 8-8V7a2 2 0 1 0-4 0v6"/><path d="M18 3 19.1 5.2"/><path d="M22 3 20.9 5.2"/>
             </svg> <!-- snail logo -->
-            <p>BookWorm</p>
         </section>
         <section class="controls">
             <div class="filter-controls">
-                <div>All</div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sliders-horizontal">
+                        <line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/>
+                    </svg>
+                </div> <!-- slider-icon -->
+                <div class="selected-filter">All</div>
                 <div>Have Read</div>
                 <div>Wanna Read</div>
             </div>
             <div class="sort-controls">
-                <p>Sort</p>
+                <div class="selected-sort">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-down">
+                        <path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/>
+                    </svg>
+                    <!-- 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-up"><path d="m3 16 4 4 4-4"/><path d="M7 20V4"/><path d="m21 8-4-4-4 4"/><path d="M17 4v16"/></svg>
+                     -->
+                </div> <!-- sort-ascending-logo -->
                 <div>Title</div>
                 <div>Author</div>
-                <div>Recency</div>
+                <div class="selected-sort">Recency</div>
             </div>
         </section>
         <section class="page-settings">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun">
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun">
                 <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
-            </svg>
+            </svg> --> <!-- sun icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+            </svg> <!-- moon icon -->
         </section>
     </nav>
-    <aside>
-        <form action="#" method="post">
-            <p>
-                <label for="book-title">Book Title</label>
-                <input type="text" name="title" id="book-title">
-            </p>
-            <p>
-                <label for="book-author">Author</label>
-                <input type="text" name="author" id="book-author">
-            </p>
-            <p>
-                <label for="book-language">Language</label>
-                <input type="text" name="language" id="book-language">
-            </p>
-            <p>
-                <label for="num-pages">Number of Pages</label>
-                <input type="number" name="numPages" id="num-pages">
-            </p>
-            <p>
-                <legend>Have you read the book?</legend>
+
+    <div class="main-container">
+        <aside>
+            <form action="#" method="post">
+                <p>
+                    <label for="book-title">Book Title</label>
+                    <input type="text" name="title" id="book-title">
+                </p>
+                <p>
+                    <label for="book-author">Author</label>
+                    <input type="text" name="author" id="book-author">
+                </p>
+                <p>
+                    <label for="book-language">Language</label>
+                    <input type="text" name="language" id="book-language">
+                </p>
+                <p>
+                    <label for="num-pages">Number of Pages</label>
+                    <input type="number" name="numPages" id="num-pages">
+                </p>
+                <p>
+                    <span>Have you read the book?</span>
+                    <span>
+                        <label class="radio-group-label">
+                            <input type="radio" name="hasRead" id="read-status-yes" value="yes" />
+                            Yes
+                        </label>
+                        <label class="radio-group-label">
+                            <input type="radio" name="hasRead" id="read-status-no" value="no" checked />
+                            No
+                        </label>
+                    </span>
+                </p>
+                <button type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-plus">
+                        <circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/>
+                    </svg> <!-- plus icon -->
+                    <span>Add Book</span>
+                </button>
+            </form>
+        </aside>
+        <main>
+            <div class="book-item">
                 <div>
-                    <input type="radio" name="hasRead" id="read-status-yes" value="yes">
-                    <label for="read-status-yes">Yes</label>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-marked">
+                        <path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/>
+                    </svg> <!-- book-icon -->
+                    <h2 class="item-title">The Da Vinci Code</h2>
                 </div>
                 <div>
-                    <input type="radio" name="hasRead" id="read-status-no" value="no" checked>
-                    <label for="read-status-no">No</label>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-pen">
+                        <path d="M11.5 15H7a4 4 0 0 0-4 4v2"/><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/><circle cx="10" cy="7" r="4"/>
+                    </svg>
+                    <h3 class="item-author">Dan Brown</h3>
                 </div>
-            </p>
-        </form>
-    </aside>
-    <main>
-        <div class="book-item">
-            <p>The Da Vinci Code</p>
-            <p>Dan Brown</p>
-            <p>English</p>
-            <p>480</p>
-            <div>
-                <button>Mark as Read</button>
-                <button>Remove Book</button>
+                <div>
+                    <p class="item-lang">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-languages">
+                            <path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/>
+                        </svg> <!-- lang-logo -->
+                        <span>English</span>
+                    </p>
+                    <p class="item-pages">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rows-4"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M21 7.5H3"/>
+                            <path d="M21 12H3"/><path d="M21 16.5H3"/>
+                        </svg>
+                        <span>480</span>
+                    </p>
+                </div>
+                <div>
+                    <button type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check">
+                            <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+                        </svg> <!-- check icon -->
+                        <span>Mark as Read</span>
+                    </button>
+                    <button type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x">
+                            <circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>
+                        </svg> <!-- cross icon -->
+                        <span>Remove Book</span>
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="book-item">
-            <p>The Da Vinci Code</p>
-            <p>Dan Brown</p>
-            <p>English</p>
-            <p>480</p>
-            <div>
-                <button>Mark as Read</button>
-                <button>Remove Book</button>
+            <div class="book-item">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-marked">
+                        <path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/>
+                    </svg> <!-- book-icon -->
+                    <h2 class="item-title">The Da Vinci Code</h2>
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-pen">
+                        <path d="M11.5 15H7a4 4 0 0 0-4 4v2"/><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/><circle cx="10" cy="7" r="4"/>
+                    </svg>
+                    <h3 class="item-author">Dan Brown</h3>
+                </div>
+                <div>
+                    <p class="item-lang">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-languages">
+                            <path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/>
+                        </svg> <!-- lang-logo -->
+                        <span>English</span>
+                    </p>
+                    <p class="item-pages">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rows-4"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M21 7.5H3"/>
+                            <path d="M21 12H3"/><path d="M21 16.5H3"/>
+                        </svg>
+                        <span>480</span>
+                    </p>
+                </div>
+                <div>
+                    <button type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check">
+                            <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+                        </svg> <!-- check icon -->
+                        <span>Mark as Read</span>
+                    </button>
+                    <button type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x">
+                            <circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>
+                        </svg> <!-- cross icon -->
+                        <span>Remove Book</span>
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="book-item">
-            <p>The Da Vinci Code</p>
-            <p>Dan Brown</p>
-            <p>English</p>
-            <p>480</p>
-            <div>
-                <button>Mark as Read</button>
-                <button>Remove Book</button>
+            <div class="book-item">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-marked">
+                        <path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/>
+                    </svg> <!-- book-icon -->
+                    <h2 class="item-title">The Da Vinci Code</h2>
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-pen">
+                        <path d="M11.5 15H7a4 4 0 0 0-4 4v2"/><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/><circle cx="10" cy="7" r="4"/>
+                    </svg>
+                    <h3 class="item-author">Dan Brown</h3>
+                </div>
+                <div>
+                    <p class="item-lang">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-languages">
+                            <path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/>
+                        </svg> <!-- lang-logo -->
+                        <span>English</span>
+                    </p>
+                    <p class="item-pages">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rows-4"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M21 7.5H3"/>
+                            <path d="M21 12H3"/><path d="M21 16.5H3"/>
+                        </svg>
+                        <span>480</span>
+                    </p>
+                </div>
+                <div>
+                    <button type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check">
+                            <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+                        </svg> <!-- check icon -->
+                        <span>Mark as Read</span>
+                    </button>
+                    <button type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x">
+                            <circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>
+                        </svg> <!-- cross icon -->
+                        <span>Remove Book</span>
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="book-item">
-            <p>The Da Vinci Code</p>
-            <p>Dan Brown</p>
-            <p>English</p>
-            <p>480</p>
-            <div>
-                <button>Mark as Read</button>
-                <button>Remove Book</button>
+            <div class="book-item">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-marked">
+                        <path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/>
+                    </svg> <!-- book-icon -->
+                    <h2 class="item-title">The Da Vinci Code</h2>
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-pen">
+                        <path d="M11.5 15H7a4 4 0 0 0-4 4v2"/><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/><circle cx="10" cy="7" r="4"/>
+                    </svg>
+                    <h3 class="item-author">Dan Brown</h3>
+                </div>
+                <div>
+                    <p class="item-lang">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-languages">
+                            <path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/>
+                        </svg> <!-- lang-logo -->
+                        <span>English</span>
+                    </p>
+                    <p class="item-pages">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rows-4"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M21 7.5H3"/>
+                            <path d="M21 12H3"/><path d="M21 16.5H3"/>
+                        </svg>
+                        <span>480</span>
+                    </p>
+                </div>
+                <div>
+                    <button type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check">
+                            <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+                        </svg> <!-- check icon -->
+                        <span>Mark as Read</span>
+                    </button>
+                    <button type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x">
+                            <circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>
+                        </svg> <!-- cross icon -->
+                        <span>Remove Book</span>
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="book-item">
-            <p>The Da Vinci Code</p>
-            <p>Dan Brown</p>
-            <p>English</p>
-            <p>480</p>
-            <div>
-                <button>Mark as Read</button>
-                <button>Remove Book</button>
+            <div class="book-item">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-marked">
+                        <path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/>
+                    </svg> <!-- book-icon -->
+                    <h2 class="item-title">The Da Vinci Code</h2>
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-pen">
+                        <path d="M11.5 15H7a4 4 0 0 0-4 4v2"/><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/><circle cx="10" cy="7" r="4"/>
+                    </svg>
+                    <h3 class="item-author">Dan Brown</h3>
+                </div>
+                <div>
+                    <p class="item-lang">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-languages">
+                            <path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/>
+                        </svg> <!-- lang-logo -->
+                        <span>English</span>
+                    </p>
+                    <p class="item-pages">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rows-4"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M21 7.5H3"/>
+                            <path d="M21 12H3"/><path d="M21 16.5H3"/>
+                        </svg>
+                        <span>480</span>
+                    </p>
+                </div>
+                <div>
+                    <button type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check">
+                            <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+                        </svg> <!-- check icon -->
+                        <span>Mark as Read</span>
+                    </button>
+                    <button type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x">
+                            <circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>
+                        </svg> <!-- cross icon -->
+                        <span>Remove Book</span>
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="book-item">
-            <p>The Da Vinci Code</p>
-            <p>Dan Brown</p>
-            <p>English</p>
-            <p>480</p>
-            <div>
-                <button>Mark as Read</button>
-                <button>Remove Book</button>
+            <div class="book-item">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-marked">
+                        <path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/>
+                    </svg> <!-- book-icon -->
+                    <h2 class="item-title">The Da Vinci Code</h2>
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-pen">
+                        <path d="M11.5 15H7a4 4 0 0 0-4 4v2"/><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/><circle cx="10" cy="7" r="4"/>
+                    </svg>
+                    <h3 class="item-author">Dan Brown</h3>
+                </div>
+                <div>
+                    <p class="item-lang">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-languages">
+                            <path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/>
+                        </svg> <!-- lang-logo -->
+                        <span>English</span>
+                    </p>
+                    <p class="item-pages">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rows-4"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M21 7.5H3"/>
+                            <path d="M21 12H3"/><path d="M21 16.5H3"/>
+                        </svg>
+                        <span>480</span>
+                    </p>
+                </div>
+                <div>
+                    <button type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check">
+                            <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+                        </svg> <!-- check icon -->
+                        <span>Mark as Read</span>
+                    </button>
+                    <button type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x">
+                            <circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>
+                        </svg> <!-- cross icon -->
+                        <span>Remove Book</span>
+                    </button>
+                </div>
             </div>
-        </div>
-    </main>
+            <div class="book-item">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-marked">
+                        <path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/>
+                    </svg> <!-- book-icon -->
+                    <h2 class="item-title">The Da Vinci Code</h2>
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-pen">
+                        <path d="M11.5 15H7a4 4 0 0 0-4 4v2"/><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/><circle cx="10" cy="7" r="4"/>
+                    </svg>
+                    <h3 class="item-author">Dan Brown</h3>
+                </div>
+                <div>
+                    <p class="item-lang">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-languages">
+                            <path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/>
+                        </svg> <!-- lang-logo -->
+                        <span>English</span>
+                    </p>
+                    <p class="item-pages">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rows-4"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M21 7.5H3"/>
+                            <path d="M21 12H3"/><path d="M21 16.5H3"/>
+                        </svg>
+                        <span>480</span>
+                    </p>
+                </div>
+                <div>
+                    <button type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check">
+                            <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+                        </svg> <!-- check icon -->
+                        <span>Mark as Read</span>
+                    </button>
+                    <button type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x">
+                            <circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>
+                        </svg> <!-- cross icon -->
+                        <span>Remove Book</span>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
 </body>
 
 </html>
