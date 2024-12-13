@@ -11,7 +11,125 @@
 </head>
 
 <body>
-    
+    <nav>
+        <section class="branding">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-snail">
+                <path d="M2 13a6 6 0 1 0 12 0 4 4 0 1 0-8 0 2 2 0 0 0 4 0"/><circle cx="10" cy="13" r="8"/><path d="M2 21h12c4.4 0 8-3.6 8-8V7a2 2 0 1 0-4 0v6"/><path d="M18 3 19.1 5.2"/><path d="M22 3 20.9 5.2"/>
+            </svg> <!-- snail logo -->
+            <p>BookWorm</p>
+        </section>
+        <section class="controls">
+            <div class="filter-controls">
+                <div>All</div>
+                <div>Have Read</div>
+                <div>Wanna Read</div>
+            </div>
+            <div class="sort-controls">
+                <p>Sort</p>
+                <div>Title</div>
+                <div>Author</div>
+                <div>Recency</div>
+            </div>
+        </section>
+        <section class="page-settings">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun">
+                <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+            </svg>
+        </section>
+    </nav>
+    <aside>
+        <form action="#" method="post">
+            <p>
+                <label for="book-title">Book Title</label>
+                <input type="text" name="title" id="book-title">
+            </p>
+            <p>
+                <label for="book-author">Author</label>
+                <input type="text" name="author" id="book-author">
+            </p>
+            <p>
+                <label for="book-language">Language</label>
+                <input type="text" name="language" id="book-language">
+            </p>
+            <p>
+                <label for="num-pages">Number of Pages</label>
+                <input type="number" name="numPages" id="num-pages">
+            </p>
+            <p>
+                <legend>Have you read the book?</legend>
+                <div>
+                    <input type="radio" name="hasRead" id="read-status-yes" value="yes">
+                    <label for="read-status-yes">Yes</label>
+                </div>
+                <div>
+                    <input type="radio" name="hasRead" id="read-status-no" value="no" checked>
+                    <label for="read-status-no">No</label>
+                </div>
+            </p>
+        </form>
+    </aside>
+    <main>
+        <div class="book-item">
+            <p>The Da Vinci Code</p>
+            <p>Dan Brown</p>
+            <p>English</p>
+            <p>480</p>
+            <div>
+                <button>Mark as Read</button>
+                <button>Remove Book</button>
+            </div>
+        </div>
+        <div class="book-item">
+            <p>The Da Vinci Code</p>
+            <p>Dan Brown</p>
+            <p>English</p>
+            <p>480</p>
+            <div>
+                <button>Mark as Read</button>
+                <button>Remove Book</button>
+            </div>
+        </div>
+        <div class="book-item">
+            <p>The Da Vinci Code</p>
+            <p>Dan Brown</p>
+            <p>English</p>
+            <p>480</p>
+            <div>
+                <button>Mark as Read</button>
+                <button>Remove Book</button>
+            </div>
+        </div>
+        <div class="book-item">
+            <p>The Da Vinci Code</p>
+            <p>Dan Brown</p>
+            <p>English</p>
+            <p>480</p>
+            <div>
+                <button>Mark as Read</button>
+                <button>Remove Book</button>
+            </div>
+        </div>
+        <div class="book-item">
+            <p>The Da Vinci Code</p>
+            <p>Dan Brown</p>
+            <p>English</p>
+            <p>480</p>
+            <div>
+                <button>Mark as Read</button>
+                <button>Remove Book</button>
+            </div>
+        </div>
+        <div class="book-item">
+            <p>The Da Vinci Code</p>
+            <p>Dan Brown</p>
+            <p>English</p>
+            <p>480</p>
+            <div>
+                <button>Mark as Read</button>
+                <button>Remove Book</button>
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>
