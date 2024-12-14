@@ -58,29 +58,29 @@
             <form action="#" method="post">
                 <p>
                     <label for="book-title">Book Title</label>
-                    <input type="text" name="title" id="book-title">
+                    <input type="text" name="title" id="book-title" required>
                 </p>
                 <p>
                     <label for="book-author">Author</label>
-                    <input type="text" name="author" id="book-author">
+                    <input type="text" name="author" id="book-author" required>
                 </p>
                 <p>
                     <label for="book-language">Language</label>
-                    <input type="text" name="language" id="book-language">
+                    <input type="text" name="language" id="book-language" required>
                 </p>
                 <p>
                     <label for="num-pages">Number of Pages</label>
-                    <input type="number" name="numPages" id="num-pages">
+                    <input type="number" name="numPages" id="num-pages" required minlength="1">
                 </p>
                 <p>
                     <span>Have you read the book?</span>
                     <span>
                         <label class="radio-group-label">
-                            <input type="radio" name="hasRead" id="read-status-yes" value="yes" />
+                            <input type="radio" name="hasRead" id="read-status-yes" value="yes" required />
                             Yes
                         </label>
                         <label class="radio-group-label">
-                            <input type="radio" name="hasRead" id="read-status-no" value="no" checked />
+                            <input type="radio" name="hasRead" id="read-status-no" value="no" checked required />
                             No
                         </label>
                     </span>
