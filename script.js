@@ -23,11 +23,12 @@ const seeds = [
     ["Crime and Punishment", "Fyodor Dostoevsky", "Russian", 480, true]
 ];
 
-const books = [];
+let id = 0;
+let books = [];
 
 for (let seed of seeds) {
     createBook(...seed);
-    addBookToDOM(books[0]);
+    updateDisplay(books[0]);
 }
 
 const form = document.querySelector("form");
@@ -36,14 +37,26 @@ form.addEventListener("submit", event => {
     const data = Object.fromEntries(new FormData(event.target));
     
     createBook(data.title, data.author, data.language, data.numPages, data.hasRead === "yes");
-    addBookToDOM(books[0]);
+    updateDisplay(books[0]);
 
     document.querySelectorAll("form input").forEach(input => {
         input.value = "";
     });
 });
 
-function addBookToDOM(book) {
+function updateDisplay(book) {
+    const checkMarkIcon = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check">
+            <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+        </svg>
+    `;
+
+    const minusIcon = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-minus">
+            <circle cx="12" cy="12" r="10"/><path d="M8 12h8"/>
+        </svg>
+    `;
+
     const container = document.querySelector("main");
 
     const newEntry = document.createElement("div");
@@ -77,13 +90,11 @@ function addBookToDOM(book) {
             </p>
         </div>
         <div>
-            <button type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check">
-                    <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
-                </svg> <!-- check icon -->
-                <span>${"Mark as Unread"}</span>
+            <button type="button" class="read-status-toggler">
+                ${book.readStatus ? minusIcon : checkMarkIcon}
+                <span>${book.readStatus ? "Mark as Unread" : "Mark as Read"}</span>
             </button>
-            <button type="button">
+            <button type="button" class="remove-book-button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x">
                     <circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>
                 </svg> <!-- cross icon -->
@@ -91,16 +102,33 @@ function addBookToDOM(book) {
             </button>
         </div>
     `;
+
     container.insertBefore(newEntry, container.firstChild);
+
+    const readStatusToggler = newEntry.querySelector(".read-status-toggler");
+    readStatusToggler.addEventListener("click", event => {
+        book.readStatus = !book.readStatus;
+
+        readStatusToggler.innerHTML = book.readStatus ? 
+        `${minusIcon} <span>Mark as Unread</span>` :
+        `${checkMarkIcon} <span>Mark as Read</span>`;
+    });
+
+    const removeBookButton = newEntry.querySelector(".remove-book-button");
+    removeBookButton.addEventListener("click", event => {
+        newEntry.remove();
+        books = books.filter(item => item.id !== book.id);
+    });
 }
 
 function createBook(title, author, language, numPages, readStatus) {
-    const book = new Book(title, author, language, numPages, readStatus);
+    const book = new Book(title, author, language, numPages, readStatus, id ++);
 
     books.unshift(book);
 }
 
-function Book(title, author, language, numPages, readStatus) {
+function Book(title, author, language, numPages, readStatus, id) {
+    this.id = id;
     this.title = title;
     this.author = author;
     this.language = language;
