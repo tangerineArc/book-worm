@@ -44,6 +44,56 @@ form.addEventListener("submit", event => {
     });
 });
 
+filterBooks();
+
+function filterBooks() {
+    const filterOptions = document.querySelectorAll(".filter-controls > div:not(:first-child)");
+
+    const [allFilter, readFilter, unreadFilter] = filterOptions;
+
+    readFilter.addEventListener("click", event => {
+        document.querySelector("main").innerHTML = "";
+
+        const readBooks = books.filter(book => book.readStatus);
+        readBooks.reverse();
+        readBooks.forEach(book => {
+            updateDisplay(book);
+        });
+
+        allFilter.className = "";
+        unreadFilter.className = "";
+        readFilter.className = "selected-filter";
+    });
+
+    allFilter.addEventListener("click", event => {
+        document.querySelector("main").innerHTML = "";
+
+        const booksCopy = structuredClone(books);
+        booksCopy.reverse();
+        booksCopy.forEach(book => {
+            updateDisplay(book);
+        });
+
+        unreadFilter.className = "";
+        readFilter.className = "";
+        allFilter.className = "selected-filter";
+    });
+
+    unreadFilter.addEventListener("click", event => {
+        document.querySelector("main").innerHTML = "";
+
+        const unreadBooks = books.filter(book => !book.readStatus);
+        unreadBooks.reverse();
+        unreadBooks.forEach(book => {
+            updateDisplay(book);
+        });
+
+        readFilter.className = "";
+        allFilter.className = "";
+        unreadFilter.className = "selected-filter";
+    });
+}
+
 function updateDisplay(book) {
     const checkMarkIcon = `
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check">
@@ -64,27 +114,27 @@ function updateDisplay(book) {
 
     newEntry.innerHTML = `
         <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-marked">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/>
             </svg> <!-- book-icon -->
             <h2 class="item-title">${book.title}</h2>
         </div>
         <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-pen">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M11.5 15H7a4 4 0 0 0-4 4v2"/><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/><circle cx="10" cy="7" r="4"/>
             </svg>
             <h3 class="item-author">${book.author}</h3>
         </div>
         <div>
             <p class="item-lang">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-languages">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/>
                 </svg> <!-- lang-logo -->
                 <span>${book.language}</span>
             </p>
             <p class="item-pages">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rows-4"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M21 7.5H3"/>
-                    <path d="M21 12H3"/><path d="M21 16.5H3"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="18" x="3" y="3" rx="2"/><path d="M21 7.5H3"/><path d="M21 12H3"/><path d="M21 16.5H3"/>
                 </svg>
                 <span>${book.numPages}</span>
             </p>
@@ -95,7 +145,7 @@ function updateDisplay(book) {
                 <span>${book.readStatus ? "Mark as Unread" : "Mark as Read"}</span>
             </button>
             <button type="button" class="remove-book-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>
                 </svg> <!-- cross icon -->
                 <span>Remove Book</span>
