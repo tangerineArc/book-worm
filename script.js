@@ -37,7 +37,8 @@ form.addEventListener("submit", event => {
     const data = Object.fromEntries(new FormData(event.target));
     
     createBook(data.title, data.author, data.language, data.numPages, data.hasRead === "yes");
-    updateDisplay(books[0]);
+
+    document.querySelector(".filter-controls > div:nth-child(2)").click(); // updates display and book array -> click all filter
 
     document.querySelectorAll("form input").forEach(input => {
         input.value = "";
