@@ -26,6 +26,8 @@ const seeds = [
 let id = 0;
 let books = [];
 
+let sortOrder = "increasing";
+
 for (let seed of seeds) {
     createBook(...seed);
     updateDisplay(books[0]);
@@ -46,14 +48,123 @@ form.addEventListener("submit", event => {
 });
 
 filterBooks();
+sortBooks();
+
+function sortBooks() {
+    const operations = []; // maintains queue of sort-options
+
+    const mainContainer = document.querySelector("main");
+
+    const [orderSort, titleSort, authorSort, recencySort] = document.querySelectorAll(".sort-controls > div");
+
+    orderSort.addEventListener("click", event => {
+        if (sortOrder === "decreasing") {
+            sortOrder = "increasing";
+            
+            orderSort.title = "sorted in ascending order";
+            orderSort.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m3 16 4 4 4-4"/><path d="M7 20V4"/><path d="m21 8-4-4-4 4"/><path d="M17 4v16"/>
+                </svg>
+            `;
+        } else {
+            sortOrder = "decreasing";
+
+            orderSort.title = "sorted in descending order";
+            orderSort.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/>
+                </svg>
+            `;
+        }
+
+        for (let option of [titleSort, authorSort, recencySort]) {
+            if (option.className === "selected-sort") {
+                option.click();
+            }
+        }
+    });
+
+    titleSort.addEventListener("click", event => {
+        if (titleSort.className === "selected-sort") {
+            unSort(titleSort);
+            return;
+        }
+        handleSorting("title", titleSort);
+    });
+    authorSort.addEventListener("click", event => {
+        if (authorSort.className === "selected-sort") {
+            unSort(authorSort);
+            return;
+        }
+        handleSorting("author", authorSort);
+    });
+    recencySort.addEventListener("click", event => {
+        if (recencySort.className === "selected-sort") {
+            unSort(recencySort);
+            return;
+        }
+        handleSorting("id", recencySort);
+    });
+
+    function handleSorting(property, option) {
+        books.sort((a, b) => {
+            if (a[property] > b[property]) return -1;
+            if (a[property] < b[property]) return 1;
+            return 0;
+        });
+
+        if (sortOrder === "increasing") {
+            books.reverse();
+        }
+
+        mainContainer.innerHTML = "";
+        option.className = "selected-sort";
+
+        structuredClone(books).reverse().forEach(book => {
+            updateDisplay(book);
+        });
+
+        document.querySelector(".selected-filter").click();
+        
+        operations.push(option);
+    }
+
+    function unSort(option) {
+        option.className = "";
+
+        mainContainer.innerHTML = "";
+
+        books.sort((a, b) => {
+            if (a.id > b.id) return -1;
+            if (a.id < b.id) return 1;
+            return 0;
+        }); // decreasing order of recency is the default
+        console.log(books);
+        structuredClone(books).reverse().forEach(book => {
+            updateDisplay(book);
+        });
+
+        const operationsCopy = [...operations];
+        operations.length = 0;
+        while(operationsCopy.length) {
+            const operation = operationsCopy.shift();
+            if (operation !== option) {
+                operation.click();
+            }
+        }
+
+        document.querySelector(".selected-filter").click(); // updates display and book array -> click all filter
+    }
+}
 
 function filterBooks() {
-    const filterOptions = document.querySelectorAll(".filter-controls > div:not(:first-child)");
+    const mainContainer = document.querySelector("main");
 
-    const [allFilter, readFilter, unreadFilter] = filterOptions;
+    const [allFilter, readFilter, unreadFilter] = document.querySelectorAll(".filter-controls > div:not(:first-child)");
 
     readFilter.addEventListener("click", event => {
-        document.querySelector("main").innerHTML = "";
+        mainContainer.innerHTML = "";
 
         const readBooks = books.filter(book => book.readStatus);
         readBooks.reverse();
@@ -67,7 +178,7 @@ function filterBooks() {
     });
 
     allFilter.addEventListener("click", event => {
-        document.querySelector("main").innerHTML = "";
+        mainContainer.innerHTML = "";
 
         const booksCopy = structuredClone(books);
         booksCopy.reverse();
@@ -81,7 +192,7 @@ function filterBooks() {
     });
 
     unreadFilter.addEventListener("click", event => {
-        document.querySelector("main").innerHTML = "";
+        mainContainer.innerHTML = "";
 
         const unreadBooks = books.filter(book => !book.readStatus);
         unreadBooks.reverse();
@@ -97,13 +208,13 @@ function filterBooks() {
 
 function updateDisplay(book) {
     const checkMarkIcon = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
         </svg>
     `;
 
     const minusIcon = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-minus">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/><path d="M8 12h8"/>
         </svg>
     `;
