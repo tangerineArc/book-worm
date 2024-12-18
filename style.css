@@ -10,6 +10,23 @@
 }
 
 :root {
+    --brand-font-family: "Tangerine", cursive;
+    --main-font-family: "Roboto", sans-serif;
+}
+
+:root.light {
+    --primary-text-color: #273043;
+    --brand-text-color: #000000;
+
+    --nav-background-color: #fff0f3;
+    --primary-background-color: #edf2f4;
+    --secondary-background-color: #fae0e4;
+    --pane-background-color: #fdffff;
+
+    --accent-color: #ff758f;
+}
+
+:root.dark {
     --primary-text-color: lightgrey;
     --brand-text-color: #ffffff;
 
@@ -19,9 +36,6 @@
     --pane-background-color: #1c1c21;
 
     --accent-color: #ff8fa3;
-
-    --brand-font-family: "Tangerine", cursive;
-    --main-font-family: "Roboto", sans-serif;
 }
 
 body {
