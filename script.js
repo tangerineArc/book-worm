@@ -275,7 +275,11 @@ function updateDisplay(book) {
 
     const readStatusToggler = newEntry.querySelector(".read-status-toggler");
     readStatusToggler.addEventListener("click", event => {
-        book.readStatus = !book.readStatus;
+        books.forEach(item => {
+            if (item.id === book.id) {
+                item.readStatus = !item.readStatus;
+            }
+        });
 
         readStatusToggler.innerHTML = book.readStatus ? 
         `${minusIcon} <span>Mark as Unread</span>` :
